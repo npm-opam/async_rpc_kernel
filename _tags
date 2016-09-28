@@ -1,0 +1,53 @@
+<**/*.ml{,i}>: warn(-40), no_alias_deps
+<**/*>: thread
+# This prevents the implicit addition of -ppx options by ocamlfind
+<**/*>: predicate(custom_ppx)
+<src/*.ml>: for-pack(Async_rpc_kernel)
+<src/*.ml{,i}>: pp(ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop)
+# OASIS_START
+# DO NOT EDIT (digest: 87b79a2dfec2d86fb6de43b44bf0b0c0)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library async_rpc_kernel
+"src/async_rpc_kernel.cmxs": use_async_rpc_kernel
+"src/connection.cmx": for-pack(Async_rpc_kernel)
+"src/connection_intf.cmx": for-pack(Async_rpc_kernel)
+"src/description.cmx": for-pack(Async_rpc_kernel)
+"src/implementation.cmx": for-pack(Async_rpc_kernel)
+"src/implementation_types.cmx": for-pack(Async_rpc_kernel)
+"src/implementations.cmx": for-pack(Async_rpc_kernel)
+"src/nat0.cmx": for-pack(Async_rpc_kernel)
+"src/protocol.cmx": for-pack(Async_rpc_kernel)
+"src/rpc.cmx": for-pack(Async_rpc_kernel)
+"src/rpc_error.cmx": for-pack(Async_rpc_kernel)
+"src/rpc_result.cmx": for-pack(Async_rpc_kernel)
+"src/std.cmx": for-pack(Async_rpc_kernel)
+"src/transport.cmx": for-pack(Async_rpc_kernel)
+"src/transport_intf.cmx": for-pack(Async_rpc_kernel)
+"src/util.cmx": for-pack(Async_rpc_kernel)
+"src/versioned_rpc.cmx": for-pack(Async_rpc_kernel)
+"src/writer_with_length.cmx": for-pack(Async_rpc_kernel)
+<src/*.ml{,i,y}>: package(async_kernel)
+<src/*.ml{,i,y}>: package(bin_prot)
+<src/*.ml{,i,y}>: package(core_kernel)
+<src/*.ml{,i,y}>: package(fieldslib)
+<src/*.ml{,i,y}>: package(ppx_assert.runtime-lib)
+<src/*.ml{,i,y}>: package(ppx_bench.runtime-lib)
+<src/*.ml{,i,y}>: package(ppx_expect.collector)
+<src/*.ml{,i,y}>: package(ppx_inline_test.runtime-lib)
+<src/*.ml{,i,y}>: package(sexplib)
+<src/*.ml{,i,y}>: package(typerep)
+<src/*.ml{,i,y}>: package(variantslib)
+# OASIS_STOP
